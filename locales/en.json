@@ -1,9 +1,9 @@
 {
   "app_name": "KidsGo",
   "onboarding": {
-    "welcome": "Welcome to KidsGo!",
+    "welcome": "Welcome to KidsGo",
     "select_language": "Choose your preferred language",
-    "sign_in_with_google": "Sign in with Google",
+    "sign_in_with_google": "Continue with Google",
     "signing_in": "Signing in...",
     "continue": "Continue",
     "sign_in": "Sign In",
@@ -28,22 +28,40 @@
     "save": "Save",
     "book_now": "Book Now"
   },
+  "home": {
+    "discover": "Discover Events",
+    "subtitle": "Find amazing activities for your kids",
+    "categories": "Categories",
+    "featured": "Featured Events",
+    "see_all": "See All"
+  },
+  "categories": {
+    "arts": "Arts & Crafts",
+    "sports": "Sports",
+    "music": "Music",
+    "education": "Education",
+    "nature": "Nature",
+    "theater": "Theater"
+  },
   "profile": {
+    "title": "Profile",
     "settings": "Settings",
     "language": "Language",
+    "account": "Account",
     "notifications": "Notifications",
     "history": "Visit History",
     "business": "Business Account",
-    "logout": "Log Out"
+    "sign_out": "Sign Out"
   },
   "errors": {
     "auth_error": "Authentication Error",
+    "sign_out_error": "Sign Out Error",
     "try_again_later": "Please try again later"
   },
   "tabs": {
     "home": "Home",
-    "search": "Search",
-    "favorites": "Favorites",
+    "explore": "Explore",
+    "saved": "Saved",
     "profile": "Profile"
   },
   "events": {
@@ -61,5 +79,9 @@
       "km": "km away",
       "nearby": "Nearby"
     }
+  },
+  "saved": {
+    "no_events": "No Saved Events",
+    "discover_events": "Start exploring events and save your favorites!"
   }
 }

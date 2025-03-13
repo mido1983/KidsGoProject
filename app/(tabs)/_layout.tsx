@@ -1,7 +1,7 @@
 import React from 'react';
 import { Tabs } from 'expo-router';
 import { useTranslation } from 'react-i18next';
-import { IconSymbol } from '@/components/ui/IconSymbol';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 export default function TabLayout() {
   const { t } = useTranslation();
@@ -9,8 +9,13 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: '#2196F3',
-        tabBarInactiveTintColor: '#999',
+        tabBarActiveTintColor: '#1976D2',
+        tabBarInactiveTintColor: '#666666',
+        tabBarStyle: {
+          backgroundColor: '#ffffff',
+          borderTopColor: '#e0e0e0',
+        },
+        headerShown: false,
       }}
     >
       <Tabs.Screen
@@ -18,25 +23,25 @@ export default function TabLayout() {
         options={{
           title: t('tabs.home'),
           tabBarIcon: ({ color, size }) => (
-            <IconSymbol name="house.fill" color={color} size={size} />
+            <MaterialCommunityIcons name="home" size={size} color={color} />
           ),
         }}
       />
       <Tabs.Screen
-        name="search"
+        name="explore"
         options={{
-          title: t('tabs.search'),
+          title: t('tabs.explore'),
           tabBarIcon: ({ color, size }) => (
-            <IconSymbol name="magnifyingglass" color={color} size={size} />
+            <MaterialCommunityIcons name="compass" size={size} color={color} />
           ),
         }}
       />
       <Tabs.Screen
-        name="favorites"
+        name="saved"
         options={{
-          title: t('tabs.favorites'),
+          title: t('tabs.saved'),
           tabBarIcon: ({ color, size }) => (
-            <IconSymbol name="heart.fill" color={color} size={size} />
+            <MaterialCommunityIcons name="bookmark" size={size} color={color} />
           ),
         }}
       />
@@ -45,7 +50,7 @@ export default function TabLayout() {
         options={{
           title: t('tabs.profile'),
           tabBarIcon: ({ color, size }) => (
-            <IconSymbol name="person.fill" color={color} size={size} />
+            <MaterialCommunityIcons name="account" size={size} color={color} />
           ),
         }}
       />

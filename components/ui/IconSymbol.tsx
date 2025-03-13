@@ -3,7 +3,7 @@
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { SymbolWeight } from 'expo-symbols';
 import React from 'react';
-import { OpaqueColorValue, StyleProp, ViewStyle } from 'react-native';
+import { OpaqueColorValue, StyleProp, TextStyle } from 'react-native';
 
 // Add your SFSymbol to MaterialIcons mappings here.
 const MAPPING = {
@@ -13,6 +13,10 @@ const MAPPING = {
   'paperplane.fill': 'send',
   'chevron.left.forwardslash.chevron.right': 'code',
   'chevron.right': 'chevron-right',
+  'heart': 'favorite',
+  'calendar': 'calendar-today',
+  'mappin': 'place',
+  'shekelsign': 'attach-money', // Using generic money icon as MaterialIcons doesn't have shekel
 } as Partial<
   Record<
     import('expo-symbols').SymbolViewProps['name'],
@@ -32,12 +36,14 @@ export function IconSymbol({
   size = 24,
   color,
   style,
+  weight, // Add weight prop
 }: {
   name: IconSymbolName;
   size?: number;
   color: string | OpaqueColorValue;
-  style?: StyleProp<ViewStyle>;
+  style?: StyleProp<TextStyle>;
   weight?: SymbolWeight;
 }) {
+  // Note: weight is ignored for MaterialIcons as it's only applicable for SF Symbols
   return <MaterialIcons color={color} size={size} name={MAPPING[name]} style={style} />;
 }

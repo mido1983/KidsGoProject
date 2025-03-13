@@ -69,7 +69,7 @@ export default function OnboardingScreen() {
     <View style={styles.container}>
       <StatusBar style="dark" />
       <LinearGradient
-        colors={['#ffffff', '#f8f9fa']}
+        colors={['#f0f6ff', '#ffffff']}
         style={styles.background}
       />
       <View style={styles.contentContainer}>
@@ -99,6 +99,7 @@ export default function OnboardingScreen() {
               <Text style={[
                 styles.nativeLanguageText,
                 selectedLang === lang.code && styles.selectedLanguageText,
+                selectedLang === lang.code && styles.selectedNativeText,
               ]}>
                 {lang.nativeName}
               </Text>
@@ -158,20 +159,22 @@ const styles = StyleSheet.create({
     marginBottom: 40,
   },
   logo: {
-    fontSize: 40,
+    fontSize: 44,
     fontWeight: '700',
-    color: '#2196F3',
-    marginBottom: 20,
+    color: '#1976D2',
+    marginBottom: 24,
+    letterSpacing: -1,
   },
   title: {
-    fontSize: 28,
+    fontSize: 32,
     fontWeight: '600',
     color: '#1a1a1a',
-    marginBottom: 12,
+    marginBottom: 16,
     textAlign: 'center',
+    letterSpacing: -0.5,
   },
   subtitle: {
-    fontSize: 17,
+    fontSize: 18,
     fontWeight: '400',
     color: '#666666',
     marginBottom: 32,
@@ -180,53 +183,64 @@ const styles = StyleSheet.create({
   languageContainer: {
     width: '100%',
     maxWidth: 360,
-    gap: 12,
+    gap: 16,
     marginBottom: 40,
   },
   languageButton: {
     backgroundColor: '#ffffff',
-    padding: 16,
-    borderRadius: 16,
+    padding: 20,
+    borderRadius: 20,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     shadowColor: '#000000',
     shadowOffset: {
       width: 0,
-      height: 2,
+      height: 4,
     },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 3,
+    shadowOpacity: 0.08,
+    shadowRadius: 8,
+    elevation: 4,
     borderWidth: 1,
     borderColor: '#e0e0e0',
   },
   selectedLanguage: {
-    backgroundColor: '#2196F3',
-    borderColor: '#2196F3',
+    backgroundColor: '#1976D2',
+    borderColor: '#1976D2',
+    shadowColor: '#1976D2',
+    shadowOpacity: 0.24,
+    shadowOffset: {
+      width: 0,
+      height: 8,
+    },
+    shadowRadius: 16,
+    elevation: 8,
   },
   buttonPressed: {
-    transform: [{ scale: 0.98 }],
+    transform: [{ scale: 0.97 }],
     opacity: 0.9,
   },
   languageText: {
-    fontSize: 17,
-    fontWeight: '500',
+    fontSize: 18,
+    fontWeight: '600',
     color: '#1a1a1a',
   },
   nativeLanguageText: {
-    fontSize: 15,
+    fontSize: 16,
     fontWeight: '400',
     color: '#666666',
   },
   selectedLanguageText: {
     color: '#ffffff',
   },
+  selectedNativeText: {
+    color: 'rgba(255, 255, 255, 0.9)',
+  },
   signInButton: {
     backgroundColor: '#ffffff',
-    paddingVertical: 16,
-    paddingHorizontal: 32,
-    borderRadius: 25,
+    paddingVertical: 18,
+    paddingHorizontal: 36,
+    borderRadius: 28,
     width: '100%',
     maxWidth: 360,
     flexDirection: 'row',
@@ -235,16 +249,16 @@ const styles = StyleSheet.create({
     shadowColor: '#000000',
     shadowOffset: {
       width: 0,
-      height: 2,
+      height: 4,
     },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 3,
+    shadowOpacity: 0.08,
+    shadowRadius: 8,
+    elevation: 4,
     borderWidth: 1,
     borderColor: '#e0e0e0',
   },
   signInButtonDisabled: {
-    opacity: 0.6,
+    opacity: 0.5,
   },
   googleIcon: {
     marginRight: 12,
@@ -252,6 +266,7 @@ const styles = StyleSheet.create({
   signInButtonText: {
     fontWeight: '600',
     color: '#1a1a1a',
-    fontSize: 17,
+    fontSize: 18,
+    letterSpacing: -0.25,
   },
 });
