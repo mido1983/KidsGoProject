@@ -9,17 +9,8 @@ import { GoogleAuthProvider, signInWithCredential } from 'firebase/auth';
 import { auth } from '../config/firebase';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
-import {
-  useFonts,
-  Inter_400Regular,
-  Inter_500Medium,
-  Inter_600SemiBold,
-  Inter_700Bold,
-} from '@expo-google-fonts/inter';
-import * as SplashScreen from 'expo-splash-screen';
 
 WebBrowser.maybeCompleteAuthSession();
-SplashScreen.preventAutoHideAsync();
 
 const languages = [
   { code: 'he', name: 'עברית', nativeName: 'Hebrew' },
@@ -32,19 +23,6 @@ export default function OnboardingScreen() {
   const { t, i18n } = useTranslation();
   const [selectedLang, setSelectedLang] = useState(i18n.language);
   const [isAuthenticating, setIsAuthenticating] = useState(false);
-
-  const [fontsLoaded] = useFonts({
-    Inter_400Regular,
-    Inter_500Medium,
-    Inter_600SemiBold,
-    Inter_700Bold,
-  });
-
-  useEffect(() => {
-    if (fontsLoaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [fontsLoaded]);
 
   const [request, response, promptAsync] = Google.useAuthRequest({
     clientId: "812631424731-fkvpet24m3av76bc5lo5uonm6c070ii0.apps.googleusercontent.com",
@@ -86,10 +64,6 @@ export default function OnboardingScreen() {
     if (isAuthenticating) return;
     await promptAsync();
   };
-
-  if (!fontsLoaded) {
-    return null;
-  }
 
   return (
     <View style={styles.container}>
@@ -184,21 +158,21 @@ const styles = StyleSheet.create({
     marginBottom: 40,
   },
   logo: {
-    fontFamily: 'Inter_700Bold',
     fontSize: 40,
+    fontWeight: '700',
     color: '#2196F3',
     marginBottom: 20,
   },
   title: {
-    fontFamily: 'Inter_600SemiBold',
     fontSize: 28,
+    fontWeight: '600',
     color: '#1a1a1a',
     marginBottom: 12,
     textAlign: 'center',
   },
   subtitle: {
-    fontFamily: 'Inter_400Regular',
     fontSize: 17,
+    fontWeight: '400',
     color: '#666666',
     marginBottom: 32,
     textAlign: 'center',
@@ -236,13 +210,13 @@ const styles = StyleSheet.create({
     opacity: 0.9,
   },
   languageText: {
-    fontFamily: 'Inter_500Medium',
     fontSize: 17,
+    fontWeight: '500',
     color: '#1a1a1a',
   },
   nativeLanguageText: {
-    fontFamily: 'Inter_400Regular',
     fontSize: 15,
+    fontWeight: '400',
     color: '#666666',
   },
   selectedLanguageText: {
@@ -276,7 +250,7 @@ const styles = StyleSheet.create({
     marginRight: 12,
   },
   signInButtonText: {
-    fontFamily: 'Inter_600SemiBold',
+    fontWeight: '600',
     color: '#1a1a1a',
     fontSize: 17,
   },
