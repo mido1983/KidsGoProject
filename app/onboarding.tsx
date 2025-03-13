@@ -1,16 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image, Alert } from 'react-native';
+import { View, Text, StyleSheet, Pressable, Alert, Platform } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useTranslation } from 'react-i18next';
-import { BlurView } from 'expo-blur';
 import { StatusBar } from 'expo-status-bar';
 import * as WebBrowser from 'expo-web-browser';
 import * as Google from 'expo-auth-session/providers/google';
 import { GoogleAuthProvider, signInWithCredential } from 'firebase/auth';
 import { auth } from '../config/firebase';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { LinearGradient } from 'expo-linear-gradient';
+import {
+  useFonts,
+  Inter_400Regular,
+  Inter_500Medium,
+  Inter_600SemiBold,
+  Inter_700Bold,
+} from '@expo-google-fonts/inter';
+import * as SplashScreen from 'expo-splash-screen';
 
-// Required for Google Sign-In
 WebBrowser.maybeCompleteAuthSession();
+SplashScreen.preventAutoHideAsync();
 
 const languages = [
   { code: 'he', name: 'עברית', nativeName: 'Hebrew' },
@@ -23,6 +32,19 @@ export default function OnboardingScreen() {
   const { t, i18n } = useTranslation();
   const [selectedLang, setSelectedLang] = useState(i18n.language);
   const [isAuthenticating, setIsAuthenticating] = useState(false);
+
+  const [fontsLoaded] = useFonts({
+    Inter_400Regular,
+    Inter_500Medium,
+    Inter_600SemiBold,
+    Inter_700Bold,
+  });
+
+  useEffect(() => {
+    if (fontsLoaded) {
+      SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
 
   const [request, response, promptAsync] = Google.useAuthRequest({
     clientId: "812631424731-fkvpet24m3av76bc5lo5uonm6c070ii0.apps.googleusercontent.com",
@@ -65,24 +87,32 @@ export default function OnboardingScreen() {
     await promptAsync();
   };
 
+  if (!fontsLoaded) {
+    return null;
+  }
+
   return (
     <View style={styles.container}>
-      <StatusBar style="light" />
-      <Image
-        source={require('../assets/images/kids-background.png')}
-        style={styles.backgroundImage}
+      <StatusBar style="dark" />
+      <LinearGradient
+        colors={['#ffffff', '#f8f9fa']}
+        style={styles.background}
       />
-      <BlurView intensity={60} style={styles.contentContainer}>
-        <Text style={styles.title}>{t('onboarding.welcome')}</Text>
-        <Text style={styles.subtitle}>{t('onboarding.select_language')}</Text>
+      <View style={styles.contentContainer}>
+        <View style={styles.header}>
+          <Text style={styles.logo}>KidsGo</Text>
+          <Text style={styles.title}>{t('onboarding.welcome')}</Text>
+          <Text style={styles.subtitle}>{t('onboarding.select_language')}</Text>
+        </View>
         
         <View style={styles.languageContainer}>
           {languages.map((lang) => (
-            <TouchableOpacity
+            <Pressable
               key={lang.code}
-              style={[
+              style={({ pressed }) => [
                 styles.languageButton,
                 selectedLang === lang.code && styles.selectedLanguage,
+                pressed && styles.buttonPressed
               ]}
               onPress={() => handleLanguageSelect(lang.code)}
             >
@@ -98,18 +128,24 @@ export default function OnboardingScreen() {
               ]}>
                 {lang.nativeName}
               </Text>
-            </TouchableOpacity>
+            </Pressable>
           ))}
         </View>
 
-        <TouchableOpacity
-          style={[styles.signInButton, isAuthenticating && styles.signInButtonDisabled]}
-          onPress={handleSignIn}
+        <Pressable
+          style={({ pressed }) => [
+            styles.signInButton,
+            isAuthenticating && styles.signInButtonDisabled,
+            pressed && styles.buttonPressed
+          ]}
           disabled={isAuthenticating}
+          onPress={handleSignIn}
         >
-          <Image 
-            source={require('../assets/images/google-logo.png')}
-            style={styles.googleLogo}
+          <MaterialCommunityIcons 
+            name="google" 
+            size={24} 
+            color="#DB4437" 
+            style={styles.googleIcon}
           />
           <Text style={styles.signInButtonText}>
             {isAuthenticating 
@@ -117,8 +153,8 @@ export default function OnboardingScreen() {
               : t('onboarding.sign_in_with_google')
             }
           </Text>
-        </TouchableOpacity>
-      </BlurView>
+        </Pressable>
+      </View>
     </View>
   );
 }
@@ -126,85 +162,122 @@ export default function OnboardingScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#000',
+    backgroundColor: '#ffffff',
   },
-  backgroundImage: {
+  background: {
     position: 'absolute',
-    width: '100%',
-    height: '100%',
-    resizeMode: 'cover',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
   },
   contentContainer: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     alignItems: 'center',
-    padding: 20,
+    padding: 24,
+    paddingTop: Platform.OS === 'ios' ? 60 : 40,
+    paddingBottom: 40,
+  },
+  header: {
+    alignItems: 'center',
+    marginBottom: 40,
+  },
+  logo: {
+    fontFamily: 'Inter_700Bold',
+    fontSize: 40,
+    color: '#2196F3',
+    marginBottom: 20,
   },
   title: {
-    fontSize: 32,
-    fontWeight: 'bold',
-    color: '#fff',
-    marginBottom: 10,
+    fontFamily: 'Inter_600SemiBold',
+    fontSize: 28,
+    color: '#1a1a1a',
+    marginBottom: 12,
     textAlign: 'center',
   },
   subtitle: {
-    fontSize: 18,
-    color: '#fff',
-    marginBottom: 40,
+    fontFamily: 'Inter_400Regular',
+    fontSize: 17,
+    color: '#666666',
+    marginBottom: 32,
     textAlign: 'center',
   },
   languageContainer: {
     width: '100%',
-    maxWidth: 300,
-    gap: 15,
+    maxWidth: 360,
+    gap: 12,
     marginBottom: 40,
   },
   languageButton: {
-    backgroundColor: 'rgba(255, 255, 255, 0.1)',
-    padding: 15,
-    borderRadius: 12,
-    alignItems: 'center',
+    backgroundColor: '#ffffff',
+    padding: 16,
+    borderRadius: 16,
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
+    shadowColor: '#000000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
+    borderWidth: 1,
+    borderColor: '#e0e0e0',
   },
   selectedLanguage: {
-    backgroundColor: '#fff',
+    backgroundColor: '#2196F3',
+    borderColor: '#2196F3',
+  },
+  buttonPressed: {
+    transform: [{ scale: 0.98 }],
+    opacity: 0.9,
   },
   languageText: {
-    fontSize: 18,
-    color: '#fff',
-    fontWeight: '500',
+    fontFamily: 'Inter_500Medium',
+    fontSize: 17,
+    color: '#1a1a1a',
   },
   nativeLanguageText: {
-    fontSize: 16,
-    color: 'rgba(255, 255, 255, 0.8)',
+    fontFamily: 'Inter_400Regular',
+    fontSize: 15,
+    color: '#666666',
   },
   selectedLanguageText: {
-    color: '#000',
+    color: '#ffffff',
   },
   signInButton: {
-    backgroundColor: '#fff',
-    paddingVertical: 15,
-    paddingHorizontal: 30,
+    backgroundColor: '#ffffff',
+    paddingVertical: 16,
+    paddingHorizontal: 32,
     borderRadius: 25,
     width: '100%',
-    maxWidth: 300,
+    maxWidth: 360,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    gap: 10,
+    shadowColor: '#000000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
+    borderWidth: 1,
+    borderColor: '#e0e0e0',
   },
   signInButtonDisabled: {
-    opacity: 0.7,
+    opacity: 0.6,
+  },
+  googleIcon: {
+    marginRight: 12,
   },
   signInButtonText: {
-    color: '#000',
-    fontSize: 18,
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-  googleLogo: {
-    width: 24,
-    height: 24,
+    fontFamily: 'Inter_600SemiBold',
+    color: '#1a1a1a',
+    fontSize: 17,
   },
 });
