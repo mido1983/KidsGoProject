@@ -19,7 +19,10 @@ export function EventCard({ id, title, date, location, price, imageUrl, distance
   const { t } = useTranslation();
 
   return (
-    <Link href={`/event/${id}`} asChild>
+    <Link href={{
+      pathname: "/event/[id]",
+      params: { id }
+    }} asChild>
       <TouchableOpacity style={styles.container}>
         <Image source={{ uri: imageUrl }} style={styles.image} />
         <BlurView intensity={80} tint="dark" style={styles.infoContainer}>
