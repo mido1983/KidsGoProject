@@ -1,50 +1,123 @@
-# Welcome to your Expo app 👋
+# KidsGo 🎈
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+KidsGo is a multilingual mobile application designed to help parents discover and book children's events and activities in Israel. The app supports Hebrew, Russian, and English, making it accessible to diverse communities.
 
-## Get started
+## Features 🌟
 
-1. Install dependencies
+- **Multilingual Support**: Full support for Hebrew, Russian, and English
+- **Smart Event Discovery**: Find nearby events based on age, category, and location
+- **Real-time Updates**: Get instant notifications about new events and updates
+- **Social Authentication**: Easy sign-in with Google, Facebook, and Apple
+- **Event Auto-parsing**: Automatic event aggregation from multiple sources
+- **Premium Business Features**: Special tools for event organizers and venues
 
-   ```bash
-   npm install
-   ```
+## Tech Stack 🛠️
 
-2. Start the app
+- **Frontend**: React Native (Expo)
+- **Backend**: Firebase
+- **Authentication**: Firebase Auth, Expo Auth Session
+- **Database**: Firebase Firestore
+- **Translation**: Google Translate API
+- **Maps**: Google Maps API
+- **State Management**: React Context API
+- **Localization**: i18next
 
-   ```bash
-    npx expo start
-   ```
+## Data Sources 📊
 
-In the output, you'll find options to open the app in a
+- GoKids
+- Kinderland
+- TimeOut Israel
+- Meetup API
+- Eventbrite API
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## Getting Started 🚀
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+### Prerequisites
 
-## Get a fresh project
+- Node.js (v18 or higher)
+- npm or yarn
+- Expo CLI
+- Firebase account
+- Google Cloud Platform account
 
-When you're ready, run:
+### Installation
 
+1. Clone the repository:
 ```bash
-npm run reset-project
+git clone https://github.com/your-username/kidsgo.git
+cd kidsgo
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+```
 
-## Learn more
+3. Create a `.env` file in the root directory and add your configuration:
+```env
+EXPO_PUBLIC_FIREBASE_API_KEY=your_api_key
+EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN=your_auth_domain
+EXPO_PUBLIC_FIREBASE_PROJECT_ID=your_project_id
+EXPO_PUBLIC_FIREBASE_STORAGE_BUCKET=your_storage_bucket
+EXPO_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id
+EXPO_PUBLIC_FIREBASE_APP_ID=your_app_id
+EXPO_PUBLIC_GOOGLE_MAPS_API_KEY=your_google_maps_api_key
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+4. Start the development server:
+```bash
+npx expo start
+```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+### Building for Production
 
-## Join the community
+To build the app for production:
 
-Join our community of developers creating universal apps.
+```bash
+# For Android
+eas build --platform android
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+# For iOS
+eas build --platform ios
+```
+
+## Project Structure 📁
+
+```
+kidsgo/
+├── app/                    # App screens and navigation
+│   ├── (tabs)/            # Tab-based navigation screens
+│   ├── _layout.tsx        # Root layout with theme and navigation
+│   └── onboarding.tsx     # Onboarding and authentication
+├── components/            # Reusable components
+├── config/               # Configuration files
+├── hooks/                # Custom React hooks
+├── locales/              # Translation files
+│   ├── en.json          # English translations
+│   ├── he.json          # Hebrew translations
+│   └── ru.json          # Russian translations
+├── utils/                # Utility functions
+└── types/                # TypeScript type definitions
+```
+
+## Contributing 🤝
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License 📄
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Contact 📧
+
+For any questions or feedback, please reach out to our team at support@kidsgo.com
+
+---
+
+Made with ❤️ for families in Israel
