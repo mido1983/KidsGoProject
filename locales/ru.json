@@ -1,0 +1,65 @@
+{
+  "app_name": "KidsGo",
+  "onboarding": {
+    "welcome": "Добро пожаловать в KidsGo!",
+    "select_language": "Выберите предпочитаемый язык",
+    "sign_in_with_google": "Войти через Google",
+    "signing_in": "Выполняется вход...",
+    "continue": "Продолжить",
+    "sign_in": "Войти",
+    "sign_up": "Регистрация"
+  },
+  "errors": {
+    "auth_error": "Ошибка аутентификации",
+    "try_again_later": "Пожалуйста, попробуйте позже"
+  },
+  "tabs": {
+    "home": "Главная",
+    "search": "Поиск",
+    "favorites": "Избранное",
+    "profile": "Профиль"
+  },
+  "events": {
+    "nearby": "События поблизости",
+    "no_events": "События не найдены",
+    "age_filter": "Возраст",
+    "category_filter": "Категория",
+    "date_filter": "Дата",
+    "price": {
+      "free": "Бесплатно",
+      "paid": "Платно",
+      "from": "От"
+    },
+    "distance": {
+      "km": "км",
+      "nearby": "Рядом"
+    }
+  },
+  "main": {
+    "nearby": "События поблизости",
+    "search": "Поиск",
+    "favorites": "Избранное",
+    "profile": "Профиль"
+  },
+  "filters": {
+    "age": "Возраст",
+    "date": "Дата",
+    "category": "Категория",
+    "apply": "Применить фильтры"
+  },
+  "event": {
+    "price": "Цена",
+    "location": "Место проведения",
+    "share": "Поделиться",
+    "save": "Сохранить",
+    "book_now": "Забронировать"
+  },
+  "profile": {
+    "settings": "Настройки",
+    "language": "Язык",
+    "notifications": "Уведомления",
+    "history": "История посещений",
+    "business": "Бизнес-аккаунт",
+    "logout": "Выйти"
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "app_name": "KidsGo",
+  "onboarding": {
+    "welcome": "!KidsGo-ברוכים הבאים ל",
+    "select_language": "בחר את השפה המועדפת עליך",
+    "sign_in_with_google": "Google התחבר באמצעות",
+    "signing_in": "...מתחבר",
+    "continue": "המשך",
+    "sign_in": "התחברות",
+    "sign_up": "הרשמה"
+  },
+  "errors": {
+    "auth_error": "שגיאת אימות",
+    "try_again_later": "אנא נסה שוב מאוחר יותר"
+  },
+  "main": {
+    "nearby": "אירועים בקרבת מקום",
+    "search": "חיפוש",
+    "favorites": "מועדפים",
+    "profile": "פרופיל"
+  },
+  "tabs": {
+    "home": "בית",
+    "search": "חיפוש",
+    "favorites": "מועדפים",
+    "profile": "פרופיל"
+  },
+  "events": {
+    "nearby": "אירועים בקרבת מקום",
+    "no_events": "לא נמצאו אירועים",
+    "age_filter": "גיל",
+    "category_filter": "קטגוריה",
+    "date_filter": "תאריך",
+    "price": {
+      "free": "חינם",
+      "paid": "בתשלום",
+      "from": "החל מ"
+    },
+    "distance": {
+      "km": "ק״מ",
+      "nearby": "בקרבת מקום"
+    }
+  },
+  "filters": {
+    "age": "גיל",
+    "date": "תאריך",
+    "category": "קטגוריה",
+    "apply": "החל סינון"
+  },
+  "event": {
+    "price": "מחיר",
+    "location": "מיקום",
+    "share": "שתף",
+    "save": "שמור",
+    "book_now": "הזמן עכשיו"
+  },
+  "profile": {
+    "settings": "הגדרות",
+    "language": "שפה",
+    "notifications": "התראות",
+    "history": "היסטוריית ביקורים",
+    "business": "חשבון עסקי",
+    "logout": "התנתק"
+  }
+}

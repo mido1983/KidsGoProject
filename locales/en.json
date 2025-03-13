@@ -1,0 +1,65 @@
+{
+  "app_name": "KidsGo",
+  "onboarding": {
+    "welcome": "Welcome to KidsGo!",
+    "select_language": "Choose your preferred language",
+    "sign_in_with_google": "Sign in with Google",
+    "signing_in": "Signing in...",
+    "continue": "Continue",
+    "sign_in": "Sign In",
+    "sign_up": "Sign Up"
+  },
+  "main": {
+    "nearby": "Nearby Events",
+    "search": "Search",
+    "favorites": "Favorites",
+    "profile": "Profile"
+  },
+  "filters": {
+    "age": "Age",
+    "date": "Date",
+    "category": "Category",
+    "apply": "Apply Filters"
+  },
+  "event": {
+    "price": "Price",
+    "location": "Location",
+    "share": "Share",
+    "save": "Save",
+    "book_now": "Book Now"
+  },
+  "profile": {
+    "settings": "Settings",
+    "language": "Language",
+    "notifications": "Notifications",
+    "history": "Visit History",
+    "business": "Business Account",
+    "logout": "Log Out"
+  },
+  "errors": {
+    "auth_error": "Authentication Error",
+    "try_again_later": "Please try again later"
+  },
+  "tabs": {
+    "home": "Home",
+    "search": "Search",
+    "favorites": "Favorites",
+    "profile": "Profile"
+  },
+  "events": {
+    "nearby": "Nearby Events",
+    "no_events": "No events found",
+    "age_filter": "Age",
+    "category_filter": "Category",
+    "date_filter": "Date",
+    "price": {
+      "free": "Free",
+      "paid": "Paid",
+      "from": "From"
+    },
+    "distance": {
+      "km": "km away",
+      "nearby": "Nearby"
+    }
+  }
+}
